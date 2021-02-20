@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import style from './Profile.module.scss';
+import style from './Feedback.module.scss';
 
 class Feedback extends Component {
   // Модель (хранение данных)
@@ -39,33 +40,30 @@ class Feedback extends Component {
 
   render() {
     return (
-      <div className='Feedback'>
+      <div className={style.Feedback}>
         <p>Please leave feedback</p>
-        <div className='buttons'>
+        <div className={style.buttons}>
           <button 
-            className='button' 
             type='button' 
             onClick={this.handleIncrement}>
                 Good
           </button>
           <button 
-            className='button' 
             type='button' 
             onClick={this.handleNeutral}>
                 Neutral
           </button>
           <button 
-            className='button' 
             type='button' 
             onClick={this.handleBad}>
                 Bad
           </button>
         </div>
         <p>Statistics</p>
-        <ul>
-          <li>Good: <span className='good'>{this.state.good}</span></li>
-          <li>Neutral: <span className='neutral'>{this.state.neutral}</span></li>
-          <li>Bad: <span className='bad'>{this.state.bad}</span></li>
+        <ul className={style.indicators}>
+          <li>Good: <span>{this.state.good}</span></li>
+          <li>Neutral: <span>{this.state.neutral}</span></li>
+          <li>Bad: <span>{this.state.bad}</span></li>
         </ul>
       </div>
     );
