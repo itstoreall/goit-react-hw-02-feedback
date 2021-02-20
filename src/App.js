@@ -4,39 +4,35 @@ import Statistics from './components/Statistics';
 import FeedbackOptions from './components/FeedbackOptions';
 
 class App extends Component {
-  // Модель (хранение данных)
-  // Публичное свойство
+  // static propTypes = {};
+  
   state = {
     good: 0,
     neutral: 0,
     bad: 0
   };
 
-  // static propTypes = {};
-
   handleGood = e => {
     // Не основываясь на предидущем
     // this.setState({good: 50})
-    this.setState((prevState) => {
-      return {
+    this.setState((prevState) => ({
         good: prevState.good + 1
       }
-    })
+    ))
   }
 
   handleNeutral = e => {
-    this.setState((prevState) => {
-      return {
+    this.setState((prevState) => ({
         neutral: prevState.neutral + 1
       }
-    })
+    ))
   }
 
   handleBad = e => {
-    this.setState((prevState) => {
-      return {
+    this.setState((prevState) => ({
         bad: prevState.bad + 1
-      }})
+      }
+    ))
   }
 
   countTotalFeedback = () => {
@@ -51,9 +47,8 @@ class App extends Component {
       / (this.state.good
       + this.state.neutral 
       + this.state.bad
-      ))
+    ))
   }
-
 
   render() {
     const { good } = this.state;
@@ -63,7 +58,7 @@ class App extends Component {
     return (
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={this.state}
+          // options={this.state}
           onLeaveFeedback={{
             onGood: this.handleGood,
             onNeutral: this.handleNeutral,
