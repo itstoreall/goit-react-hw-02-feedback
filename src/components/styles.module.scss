@@ -1,5 +1,18 @@
 .Feedback {
   padding: 16px 8px 16px;
+
+  h1 {
+    font-size: 47px;
+    font-weight: 500;
+    margin-bottom: 50px;
+  }
+
+  .statistics {
+    li {
+      margin-bottom: 12px;
+    }
+  }
+
   p {
     font-size: 47px;
     font-weight: 500;
@@ -26,12 +39,6 @@
       &:not(:last-child) {
         margin-right: 10px;
       }
-    }
-  }
-
-  .indicators {
-    li {
-      margin-bottom: 12px;
     }
   }
 }
