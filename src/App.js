@@ -4,51 +4,30 @@ import Statistics from './components/Statistics';
 import FeedbackOptions from './components/FeedbackOptions';
 
 class App extends Component {
-  // static propTypes = {};
-  
+
   state = {
     good: 0,
     neutral: 0,
     bad: 0
   };
 
-  handleGood = e => {
-    // Не основываясь на предидущем
-    // this.setState({good: 50})
+  buttonHandler = e => {
+    const name = e.target.name;
     this.setState((prevState) => ({
-        good: prevState.good + 1
-      }
-    ))
-  }
-
-  handleNeutral = e => {
-    this.setState((prevState) => ({
-        neutral: prevState.neutral + 1
-      }
-    ))
-  }
-
-  handleBad = e => {
-    this.setState((prevState) => ({
-        bad: prevState.bad + 1
-      }
-    ))
-  }
+      [name]: prevState[name] + 1
+    }));
+  };
 
   countTotalFeedback = () => {
-    return this.state.good
-      + this.state.neutral
-      + this.state.bad;
-  }
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
 
   countPositiveFeedbackPercentage = () => {
-    return Math.round(this.state.good
-      * 100
-      / (this.state.good
-      + this.state.neutral 
-      + this.state.bad
-    ))
-  }
+    const total = this.countTotalFeedback();
+    const { good } = this.state;
+    return Math.round(good * 100 / total);
+  };
 
   render() {
     const { good } = this.state;
@@ -58,12 +37,8 @@ class App extends Component {
     return (
       <Section title="Please leave feedback">
         <FeedbackOptions
-          // options={this.state}
-          onLeaveFeedback={{
-            onGood: this.handleGood,
-            onNeutral: this.handleNeutral,
-            onBad: this.handleBad
-        }}  
+          options={['good', 'neutral', 'bad']}
+          onLeaveFeedback={this.buttonHandler}
         />
         <Statistics
           good={good}
