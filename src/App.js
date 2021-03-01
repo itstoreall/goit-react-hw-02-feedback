@@ -30,9 +30,7 @@ class App extends Component {
   };
 
   render() {
-    const { good } = this.state;
-    const { neutral } = this.state;
-    const { bad } = this.state;
+    const { good, neutral, bad } = this.state;
 
     return (
       <Section title="Please leave feedback">
